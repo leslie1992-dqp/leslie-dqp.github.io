@@ -4,12 +4,13 @@
     <title>Java-IO流</title>
     <url>/2020/09/10/Java-IO%E6%B5%81/</url>
     <content><![CDATA[<p>简单介绍java的io流的概念</p>
-<a id="more"></a>
-
 <h1 id="一、IO概念"><a href="#一、IO概念" class="headerlink" title="一、IO概念"></a>一、IO概念</h1><ul>
 <li>I/O就是input和output的缩写，是计算机调度把各个储存中（包括内存和外部储存）的数据写入写出的过程</li>
 <li>所谓的外部设备可以包括硬盘文件, 网络设备, 另个程序等. 也就是当前程序之外的数据设备</li>
-<li>java中用流（stream）来抽象表示这么一个写入写出的功能，封装成一个类，都放在java.io这个包里面<h1 id="二、流（stream）的概念"><a href="#二、流（stream）的概念" class="headerlink" title="二、流（stream）的概念"></a>二、流（stream）的概念</h1></li>
+<li>java中用流（stream）来抽象表示这么一个写入写出的功能，封装成一个类，都放在java.io这个包里面</li>
+</ul>
+<a id="more"></a>
+<h1 id="二、流（stream）的概念"><a href="#二、流（stream）的概念" class="headerlink" title="二、流（stream）的概念"></a>二、流（stream）的概念</h1><ul>
 <li>stream（流）是从起源（source）到接收（sink）的有序数据。</li>
 <li>如果把输入输出源比作“水桶”的话，“流”就相当于是连接他们的“管道”，这个管道的粗细、单向性等各种属性就是区分不同流的特性，流中的各种方法就是管道上的按钮，用于操作数据的流通。<br><img src="https://img-blog.csdnimg.cn/20200802143851170.jpg" alt="在这里插入图片描述"><h1 id="三、IO流的分类"><a href="#三、IO流的分类" class="headerlink" title="三、IO流的分类"></a>三、IO流的分类</h1><h2 id="1、按照流的方向"><a href="#1、按照流的方向" class="headerlink" title="1、按照流的方向"></a>1、按照流的方向</h2></li>
 <li>输入流：只能从中读取数据（主要由InputStream和Reader作为基类）</li>
