@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>java-堆栈</title>
+    <url>/2020/10/02/java-%E5%A0%86%E6%A0%88/</url>
+    <content><![CDATA[<p>java堆栈的学习</p>
+]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+        <tag>编程</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Java-IO流</title>
     <url>/2020/09/10/Java-IO%E6%B5%81/</url>
     <content><![CDATA[<p>简单介绍java的io流的概念</p>
@@ -97,19 +110,6 @@
 <p>Reader reader=new InputStreamReader(new FileInPutstream(“文件名路径”，“编码”));</p>
 </blockquote>
 <h1 id="Writer"><a href="#Writer" class="headerlink" title="Writer"></a>Writer</h1><p>Writer和OutputStream的联系与上面Reader差不多，不再赘述。</p>
-]]></content>
-      <categories>
-        <category>学习</category>
-      </categories>
-      <tags>
-        <tag>java</tag>
-        <tag>编程</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>java-堆栈</title>
-    <url>/2020/10/02/java-%E5%A0%86%E6%A0%88/</url>
-    <content><![CDATA[<p>java堆栈的学习</p>
 ]]></content>
       <categories>
         <category>学习</category>
