@@ -270,7 +270,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://charming-c.github.io/2020/10/09/java-%E7%B1%BB%E5%8A%A0%E8%BD%BD/">
+    <link itemprop="mainEntityOfPage" href="https://charming-c.github.io/2020/10/10/java-%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/icon2.jpg">
@@ -287,7 +287,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/10/09/java-%E7%B1%BB%E5%8A%A0%E8%BD%BD/" class="post-title-link" itemprop="url">java-类加载</a>
+            <a href="/2020/10/10/java-%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/" class="post-title-link" itemprop="url">java-类加载机制</a>
         </h2>
 
         <div class="post-meta-container">
@@ -297,16 +297,10 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
+      
 
-      <time title="创建时间：2020-10-09 23:40:47" itemprop="dateCreated datePublished" datetime="2020-10-09T23:40:47+08:00">2020-10-09</time>
+      <time title="创建时间：2020-10-10 01:31:09 / 修改时间：01:56:46" itemprop="dateCreated datePublished" datetime="2020-10-10T01:31:09+08:00">2020-10-10</time>
     </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2020-10-10 00:03:48" itemprop="dateModified" datetime="2020-10-10T00:03:48+08:00">2020-10-10</time>
-      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
@@ -323,14 +317,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>231</span>
+      <span>3.8k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
+      <span>3 分钟</span>
     </span>
 </div>
 
@@ -341,8 +335,22 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="1-什么是java的类加载"><a href="#1-什么是java的类加载" class="headerlink" title="1.什么是java的类加载"></a>1.什么是java的类加载</h1><p>Java虚拟机把描述类的数据从Class文件加载到内存，并对数据进行校验、转换解析和初始化，最终形成可以被虚拟机直接使用的Java类型，这就是虚拟机的加载机制。* Class文件由类装载器装载后，在JVM中将形成一份描述Class结构的元信息对象，通过该元信息对象可以获知Class的结构信息：如构造函数，属性和方法等，Java允许用户借由这个Class相关的元信息对象间接调用Class对象的功能,这里就是我们经常能见到的Class类。</p>
-
+          <h1 id="一、什么是java的类加载"><a href="#一、什么是java的类加载" class="headerlink" title="一、什么是java的类加载"></a>一、什么是java的类加载</h1><p>一个Java文件从编码完成到最终执行，一般主要包括两个过程</p>
+<ul>
+<li>编译</li>
+<li>运行</li>
+</ul>
+<p><strong>编译</strong>，即把我们写好的java文件，通过javac命令编译成字节码，也就是我们常说的.class文件。</p>
+<p><strong>运行</strong>，则是把编译生成的.class文件交给Java虚拟机(JVM)执行。</p>
+<p>而我们所说的类加载过程即是指JVM虚拟机把.class文件中类信息加载进内存，并进行解析生成对应的class对象的过程。而这个类对象会包含成员变量、构造方法、成语方法等信息。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/10/10/java-%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -714,13 +722,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">13k</span>
+    <span title="站点总字数">17k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">12 分钟</span>
+    <span title="站点阅读时长">15 分钟</span>
   </span>
 </div>
 <div class="busuanzi-count">
