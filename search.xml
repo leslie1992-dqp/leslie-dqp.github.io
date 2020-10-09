@@ -120,6 +120,19 @@
       </tags>
   </entry>
   <entry>
+    <title>java-类加载</title>
+    <url>/2020/10/09/java-%E7%B1%BB%E5%8A%A0%E8%BD%BD/</url>
+    <content><![CDATA[<h1 id="1-什么是java的类加载"><a href="#1-什么是java的类加载" class="headerlink" title="1.什么是java的类加载"></a>1.什么是java的类加载</h1><p>Java虚拟机把描述类的数据从Class文件加载到内存，并对数据进行校验、转换解析和初始化，最终形成可以被虚拟机直接使用的Java类型，这就是虚拟机的加载机制。* Class文件由类装载器装载后，在JVM中将形成一份描述Class结构的元信息对象，通过该元信息对象可以获知Class的结构信息：如构造函数，属性和方法等，Java允许用户借由这个Class相关的元信息对象间接调用Class对象的功能,这里就是我们经常能见到的Class类。</p>
+]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+        <tag>编程</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>java-集合框架</title>
     <url>/2020/09/10/java-%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6/</url>
     <content><![CDATA[<h1 id="1-集合"><a href="#1-集合" class="headerlink" title="1. 集合"></a>1. 集合</h1><p>集合可以看作是一个容器，用来储存<strong>对象</strong>信息。我们都知道数组可以用来保存<strong>多个数据或者对象</strong>的，那为什么java中还有着比如<strong>List，Map，Set</strong>这样的集合类呢？说明数组有一定的局限性，比如：</p>
