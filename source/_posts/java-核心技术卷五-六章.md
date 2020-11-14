@@ -335,11 +335,13 @@ public class Test{
 
 1. equals()方法：
 
-   1. ```java
-      public boolean equals(Object obj) {
-              return (this == obj);
-          }
-      ```
+   ```java
+   public boolean equals(Object obj) {
+           return (this == obj);
+       }
+   ```
+
+   
 
    2. 由方法定义可知，Object类中的equals方法，用来比较两个引用的虚地址。当且仅当两个引用在物理上是同一个对象时，返回值为true，否则将返回false。
 
@@ -347,13 +349,15 @@ public class Test{
 
 2. hashCode()方法：
 
-   1. ```java
-      public native int hashCode();
-      ```
+   ```java
+   public native int hashCode();
+   ```
 
-   2. native含义native方法称为本地方法。在java源程序中以关键字“native”声明，不提供函数体。
-      其实现使用C/C++语言在另外的文件中编写，编写的规则遵循Java本地接口的规范(简称JNI)。
-      简而言就是Java中声明的可调用的使用C/C++实现的方法。
+   native含义native方法称为本地方法。在java源程序中以关键字“native”声明，不提供函数体。
+   其实现使用C/C++语言在另外的文件中编写，编写的规则遵循Java本地接口的规范(简称JNI)。
+   简而言就是Java中声明的可调用的使用C/C++实现的方法。
+
+   
 
    3. 总之不管怎么生成的散列码，在Object 类里，equals返回为true，则hashCode是相同的
 
@@ -395,21 +399,21 @@ public class Test{
 
 对象包装器类是不可变的，一旦构造了包装器，由于他的值被final修饰，就无法改变包装在其中的值，同时类被final修饰，不能被继承
 
-| 基本数据类型 | 包装类    |      |
-| :----------: | --------- | ---- |
-|     byte     | Byte      |      |
-|    short     | Short     |      |
-|     int      | Integer   |      |
-|     long     | Long      |      |
-|    float     | Float     |      |
-|    double    | Double    |      |
-|     char     | Character |      |
-|   boolean    | Boolean   |      |
+| 基本数据类型 | 包装类    |
+| :----------: | --------- |
+|     byte     | Byte      |
+|    short     | Short     |
+|     int      | Integer   |
+|     long     | Long      |
+|    float     | Float     |
+|    double    | Double    |
+|     char     | Character |
+|   boolean    | Boolean   |
 
 ​      Integer里的value和构造器：
 
 ```java
-    private final int value;
+   private final int value;
 		public Integer(int value) {
         this.value = value;
     }
@@ -444,8 +448,8 @@ java中提供3种方法获取内存中的Class对象
 3. 对象.getClass();
 
 ```java
-				Person p = new Person();
-				Class class1 = p.getClass();
+	Person p = new Person();
+	Class class1 = p.getClass();
         Class class2 = Person.class;
         Class class3 = Class.forName("extend.Person");
 //			获得类对象
@@ -459,14 +463,14 @@ java中提供3种方法获取内存中的Class对象
 > class extend.Person
 
 ```java
-				Class class1 = p.getClass();
+	Class class1 = p.getClass();
         Class class2 = Person.class;
         Class class3 = Class.forName("extend.Person");
-//			获得接口
+//		获得接口
         Class[] interfaces= class1.getInterfaces();
-//			获得构造器
+//		获得构造器
         Constructor constructor = class1.getConstructor();
-//			获得方法
+//		获得方法
         Method[] methods = class1.getMethods();
         for(Method m: methods){
             System.out.println(m);
@@ -631,15 +635,15 @@ public class Test {
 
 1. 成员内部类（成员内部类不允许存在任何static修饰的变量和方法，正如成员方法中不能有任何静态属性一样（成员方法与对象有关，静态变量与类有关），成员内部类与外部类的实例相联系，可以访问外部类的所有成员数据，正因为成员内部类与外部类的实例联系，因此它不允许在 方法区（Method Area）中申请内存，只能在 堆（Heap）中 申请，所以不能在其内部定义static成员变量，可以理解成内存上的一种包含关系。
 
-   1. ```java
+```java
       public class Outter {
           String s;
           class Inner{
           }
       }
-      ```
+```
 
-      
+​      
 
 2. 静态内部类
 
@@ -649,15 +653,15 @@ public class Test {
 
    3. 静态内部类不可以使用任何外部类的非static类（包括属性和方法—），但可以自己存在自己的成员变量
 
-   4. ```java
+```java
       public class Outter {
           String s;
           static class Inner{
           }
       }
-      ```
+```
 
-      
+​      
 
 3. 方法（局部）内部类
 
@@ -665,18 +669,21 @@ public class Test {
 
    2. 方法内部类如果要使用形参，该形参就要修饰为final
 
-      1. 原因：局部变量和局部内部类的生命周期是不一致的，当局部变量所处的函数执行完毕后，就会被销毁，但局部内部类的对象还可能一直存在（若该对象仍然被引用），而当对象要访问该局部变量时，访问的就是不存在的东西了，用final修饰就会将这个局部变量复制一份，并一直保存了这个拷贝每次访问时就能找到这个拷贝。
+      1. 原因：局部变量和局部内部类的生命周期是不一致的，当局部变量所处的函数执行完毕后，就会被销毁，但局部内部类的对象还可能一直存在（若该对象仍然被引用），而当对象要访问该局部变量时，访问的就是不存在的东西了，用final修饰就会将这个局部变量复制一份，并一直保存了这个拷贝每次访问时就能找到这个拷贝
 
-   3. ```java
-      public class Outter {
-          public Inner getInner2(){
-              class Inner2 extends Inner{
-                  String s = "Inner2";
-              }
-              return new Inner2();
+
+
+
+```java
+public class Outter {
+      public Inner getInner2(){
+          class Inner2 extends Inner{
+              String s = "Inner2";
           }
+          return new Inner2();
       }
-      ```
+  }
+```
 
 4. 匿名内部类
 
@@ -686,13 +693,13 @@ public class Test {
 
    3. 匿名内部类没有类名，因此也没有构造方法，不能有静态方法和属性
 
-   4. ```java
+   ```java
       p.eat(new Food() {
                   @Override
                   public String getName() {
                       return "unknown";
                   }
               });
-      ```
+   ```
 
       
