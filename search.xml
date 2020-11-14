@@ -107,19 +107,6 @@
       </tags>
   </entry>
   <entry>
-    <title>java-堆栈</title>
-    <url>/2020/10/02/java-%E5%A0%86%E6%A0%88/</url>
-    <content><![CDATA[<p>java堆栈的学习</p>
-]]></content>
-      <categories>
-        <category>学习</category>
-      </categories>
-      <tags>
-        <tag>java</tag>
-        <tag>编程</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>java-类加载机制</title>
     <url>/2020/10/10/java-%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/</url>
     <content><![CDATA[<h1 id="一、什么是java的类加载"><a href="#一、什么是java的类加载" class="headerlink" title="一、什么是java的类加载"></a>一、什么是java的类加载</h1><p>一个Java文件从编码完成到最终执行，一般主要包括两个过程</p>
@@ -278,14 +265,26 @@
 <p><strong>简单介绍一下Object里的几个方法</strong>：</p>
 <ol>
 <li><p>equals()方法：</p>
-<ol>
-<li><pre><code class="java">public boolean equals(Object obj) &#123;
-        return (this == obj);
-    &#125;
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">   2. 由方法定义可知，Object类中的equals方法，用来比较两个引用的虚地址。当且仅当两个引用在物理上是同一个对象时，返回值为true，否则将返回false。</span><br><span class="line"></span><br><span class="line">   3. **注意：**当此方法被重写时，通常有必要重写 hashCode 方法，以维护 hashCode 方法的常规协定，该协定声明相等对象必须具有相等的哈希码。</span><br><span class="line"></span><br><span class="line">2. hashCode()方法：</span><br><span class="line"></span><br><span class="line">   1. &#96;&#96;&#96;java</span><br><span class="line">      public native int hashCode();</span><br></pre></td></tr></table></figure></code></pre>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object obj)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (<span class="keyword">this</span> == obj);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+
+
 </li>
-<li><p>native含义native方法称为本地方法。在java源程序中以关键字“native”声明，不提供函数体。<br>其实现使用C/C++语言在另外的文件中编写，编写的规则遵循Java本地接口的规范(简称JNI)。<br>简而言就是Java中声明的可调用的使用C/C++实现的方法。</p>
+</ol>
+<ol start="2">
+<li><p>由方法定义可知，Object类中的equals方法，用来比较两个引用的虚地址。当且仅当两个引用在物理上是同一个对象时，返回值为true，否则将返回false。</p>
 </li>
+<li><p><strong>注意：</strong>当此方法被重写时，通常有必要重写 hashCode 方法，以维护 hashCode 方法的常规协定，该协定声明相等对象必须具有相等的哈希码。</p>
+</li>
+</ol>
+<ol start="2">
+<li><p>hashCode()方法：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">native</span> <span class="keyword">int</span> <span class="title">hashCode</span><span class="params">()</span></span>;</span><br></pre></td></tr></table></figure>
+
+<p>native含义native方法称为本地方法。在java源程序中以关键字“native”声明，不提供函数体。<br>其实现使用C/C++语言在另外的文件中编写，编写的规则遵循Java本地接口的规范(简称JNI)。<br>简而言就是Java中声明的可调用的使用C/C++实现的方法。</p>
+</li>
+</ol>
+<ol start="3">
 <li><p>总之不管怎么生成的散列码，在Object 类里，equals返回为true，则hashCode是相同的</p>
 </li>
 <li><p>书上讲了一下String类复写的hashCode（）方法：</p>
@@ -302,7 +301,7 @@
 </ol>
 </li>
 </ol>
-</li>
+<ol start="3">
 <li><p>getClass()方法：</p>
 <ol>
 <li>返回运行时包含对象信息的类对象,后面反射再说</li>
@@ -338,52 +337,43 @@
 <tr>
 <th align="center">基本数据类型</th>
 <th>包装类</th>
-<th></th>
 </tr>
 </thead>
 <tbody><tr>
 <td align="center">byte</td>
 <td>Byte</td>
-<td></td>
 </tr>
 <tr>
 <td align="center">short</td>
 <td>Short</td>
-<td></td>
 </tr>
 <tr>
 <td align="center">int</td>
 <td>Integer</td>
-<td></td>
 </tr>
 <tr>
 <td align="center">long</td>
 <td>Long</td>
-<td></td>
 </tr>
 <tr>
 <td align="center">float</td>
 <td>Float</td>
-<td></td>
 </tr>
 <tr>
 <td align="center">double</td>
 <td>Double</td>
-<td></td>
 </tr>
 <tr>
 <td align="center">char</td>
 <td>Character</td>
-<td></td>
 </tr>
 <tr>
 <td align="center">boolean</td>
 <td>Boolean</td>
-<td></td>
 </tr>
 </tbody></table>
 <p>​      Integer里的value和构造器：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">  <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> value;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">Integer</span><span class="params">(<span class="keyword">int</span> value)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">this</span>.value = value;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"> <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> value;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">Integer</span><span class="params">(<span class="keyword">int</span> value)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">this</span>.value = value;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
 
 <p>之前介绍的泛型数组当要储存基本类型数据时，由于&lt;&gt;里必须是类型参数，所以只能填类型名，而不能填基本数据类型，只能写成<code> ArrayList&lt;Integer&gt;()</code>这样的</p>
 <p>简单的装箱和拆箱：</p>
@@ -400,12 +390,12 @@
 <li>类名.class</li>
 <li>对象.getClass();</li>
 </ol>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">				Person p = <span class="keyword">new</span> Person();</span><br><span class="line">				Class class1 = p.getClass();</span><br><span class="line">        Class class2 = Person.class;</span><br><span class="line">        Class class3 = Class.forName(<span class="string">&quot;extend.Person&quot;</span>);</span><br><span class="line"><span class="comment">//			获得类对象</span></span><br><span class="line">        System.out.println(class1);</span><br><span class="line">        System.out.println(class2);</span><br><span class="line">        System.out.println(class3);</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">	Person p = <span class="keyword">new</span> Person();</span><br><span class="line">	Class class1 = p.getClass();</span><br><span class="line">        Class class2 = Person.class;</span><br><span class="line">        Class class3 = Class.forName(<span class="string">&quot;extend.Person&quot;</span>);</span><br><span class="line"><span class="comment">//			获得类对象</span></span><br><span class="line">        System.out.println(class1);</span><br><span class="line">        System.out.println(class2);</span><br><span class="line">        System.out.println(class3);</span><br></pre></td></tr></table></figure>
 
 <blockquote>
 <p>class extend.Person<br>class extend.Person<br>class extend.Person</p>
 </blockquote>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">				Class class1 = p.getClass();</span><br><span class="line">        Class class2 = Person.class;</span><br><span class="line">        Class class3 = Class.forName(<span class="string">&quot;extend.Person&quot;</span>);</span><br><span class="line"><span class="comment">//			获得接口</span></span><br><span class="line">        Class[] interfaces= class1.getInterfaces();</span><br><span class="line"><span class="comment">//			获得构造器</span></span><br><span class="line">        Constructor constructor = class1.getConstructor();</span><br><span class="line"><span class="comment">//			获得方法</span></span><br><span class="line">        Method[] methods = class1.getMethods();</span><br><span class="line">        <span class="keyword">for</span>(Method m: methods)&#123;</span><br><span class="line">            System.out.println(m);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(interfaces.length);</span><br><span class="line">        System.out.println(class1.getPackageName());</span><br><span class="line">        System.out.println(constructor);</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">	Class class1 = p.getClass();</span><br><span class="line">        Class class2 = Person.class;</span><br><span class="line">        Class class3 = Class.forName(<span class="string">&quot;extend.Person&quot;</span>);</span><br><span class="line"><span class="comment">//		获得接口</span></span><br><span class="line">        Class[] interfaces= class1.getInterfaces();</span><br><span class="line"><span class="comment">//		获得构造器</span></span><br><span class="line">        Constructor constructor = class1.getConstructor();</span><br><span class="line"><span class="comment">//		获得方法</span></span><br><span class="line">        Method[] methods = class1.getMethods();</span><br><span class="line">        <span class="keyword">for</span>(Method m: methods)&#123;</span><br><span class="line">            System.out.println(m);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(interfaces.length);</span><br><span class="line">        System.out.println(class1.getPackageName());</span><br><span class="line">        System.out.println(constructor);</span><br></pre></td></tr></table></figure>
 
 
 <blockquote>
@@ -451,21 +441,26 @@
 <p>这里的eat本来是传入一个Food的实例的，但是Food作为一个只有一个抽象方法的接口，刚好可以用lambda书写，只需要注意其抽象方法返回的是String，这样的lambda表达式刚好从一个类似于方法的东西在这里转型为接口使用。</p>
 <h3 id="八-内部类"><a href="#八-内部类" class="headerlink" title="八. 内部类"></a>八. 内部类</h3><p>主要分为四类：</p>
 <ol>
-<li><p>成员内部类（成员内部类不允许存在任何static修饰的变量和方法，正如成员方法中不能有任何静态属性一样（成员方法与对象有关，静态变量与类有关），成员内部类与外部类的实例相联系，可以访问外部类的所有成员数据，正因为成员内部类与外部类的实例联系，因此它不允许在 方法区（Method Area）中申请内存，只能在 堆（Heap）中 申请，所以不能在其内部定义static成员变量，可以理解成内存上的一种包含关系。</p>
+<li>成员内部类（成员内部类不允许存在任何static修饰的变量和方法，正如成员方法中不能有任何静态属性一样（成员方法与对象有关，静态变量与类有关），成员内部类与外部类的实例相联系，可以访问外部类的所有成员数据，正因为成员内部类与外部类的实例联系，因此它不允许在 方法区（Method Area）中申请内存，只能在 堆（Heap）中 申请，所以不能在其内部定义static成员变量，可以理解成内存上的一种包含关系。</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Outter</span> </span>&#123;</span><br><span class="line">    String s;</span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Inner</span></span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>​      </p>
+<ol start="2">
+<li><p>静态内部类</p>
 <ol>
-<li><pre><code class="java">public class Outter &#123;
-    String s;
-    class Inner&#123;
-    &#125;
-&#125;
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">      </span><br><span class="line"></span><br><span class="line">2. 静态内部类</span><br><span class="line"></span><br><span class="line">   1. 被关键字static修饰的成员内部类就是静态内部类</span><br><span class="line"></span><br><span class="line">   2. 静态内部类的创建不依赖于外部类，而可以直接创建</span><br><span class="line"></span><br><span class="line">   3. 静态内部类不可以使用任何外部类的非static类（包括属性和方法—），但可以自己存在自己的成员变量</span><br><span class="line"></span><br><span class="line">   4. &#96;&#96;&#96;java</span><br><span class="line">      public class Outter &#123;</span><br><span class="line">          String s;</span><br><span class="line">          static class Inner&#123;</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure>
-
-
-</code></pre>
+<li><p>被关键字static修饰的成员内部类就是静态内部类</p>
+</li>
+<li><p>静态内部类的创建不依赖于外部类，而可以直接创建</p>
+</li>
+<li><p>静态内部类不可以使用任何外部类的非static类（包括属性和方法—），但可以自己存在自己的成员变量</p>
 </li>
 </ol>
 </li>
 </ol>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Outter</span> </span>&#123;</span><br><span class="line">    String s;</span><br><span class="line">    <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Inner</span></span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>​      </p>
 <ol start="3">
 <li><p>方法（局部）内部类</p>
 <ol>
@@ -473,21 +468,26 @@
 </li>
 <li><p>方法内部类如果要使用形参，该形参就要修饰为final</p>
 <ol>
-<li>原因：局部变量和局部内部类的生命周期是不一致的，当局部变量所处的函数执行完毕后，就会被销毁，但局部内部类的对象还可能一直存在（若该对象仍然被引用），而当对象要访问该局部变量时，访问的就是不存在的东西了，用final修饰就会将这个局部变量复制一份，并一直保存了这个拷贝每次访问时就能找到这个拷贝。</li>
+<li>原因：局部变量和局部内部类的生命周期是不一致的，当局部变量所处的函数执行完毕后，就会被销毁，但局部内部类的对象还可能一直存在（若该对象仍然被引用），而当对象要访问该局部变量时，访问的就是不存在的东西了，用final修饰就会将这个局部变量复制一份，并一直保存了这个拷贝每次访问时就能找到这个拷贝</li>
 </ol>
 </li>
-<li><pre><code class="java">public class Outter &#123;
-    public Inner getInner2()&#123;
-        class Inner2 extends Inner&#123;
-            String s = &quot;Inner2&quot;;
-        &#125;
-        return new Inner2();
-    &#125;
-&#125;
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">4. 匿名内部类</span><br><span class="line"></span><br><span class="line">   1. 用得最多的内部类，一个没有名字的方法内部类，</span><br><span class="line"></span><br><span class="line">   2. 匿名内部类继承一个抽象类，或者实现一个接口</span><br><span class="line"></span><br><span class="line">   3. 匿名内部类没有类名，因此也没有构造方法，不能有静态方法和属性</span><br><span class="line"></span><br><span class="line">   4. &#96;&#96;&#96;java</span><br><span class="line">      p.eat(new Food() &#123;</span><br><span class="line">                  @Override</span><br><span class="line">                  public String getName() &#123;</span><br><span class="line">                      return &quot;unknown&quot;;</span><br><span class="line">                  &#125;</span><br><span class="line">              &#125;);</span><br></pre></td></tr></table></figure>
-</code></pre>
+</ol>
 </li>
 </ol>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Outter</span> </span>&#123;</span><br><span class="line">      <span class="function"><span class="keyword">public</span> Inner <span class="title">getInner2</span><span class="params">()</span></span>&#123;</span><br><span class="line">          <span class="class"><span class="keyword">class</span> <span class="title">Inner2</span> <span class="keyword">extends</span> <span class="title">Inner</span></span>&#123;</span><br><span class="line">              String s = <span class="string">&quot;Inner2&quot;</span>;</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">return</span> <span class="keyword">new</span> Inner2();</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li><p>匿名内部类</p>
+<ol>
+<li><p>用得最多的内部类，一个没有名字的方法内部类，</p>
+</li>
+<li><p>匿名内部类继承一个抽象类，或者实现一个接口</p>
+</li>
+<li><p>匿名内部类没有类名，因此也没有构造方法，不能有静态方法和属性</p>
+</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">p.eat(<span class="keyword">new</span> Food() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="string">&quot;unknown&quot;</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br></pre></td></tr></table></figure>
+
 </li>
 </ol>
 ]]></content>
@@ -648,6 +648,21 @@
       <tags>
         <tag>java</tag>
         <tag>编程</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ubuntu--deepin装系统心得</title>
+    <url>/2020/10/02/Linux%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85/</url>
+    <content><![CDATA[<h1 id="ubuntu-，deepin等Linux系统的安装"><a href="#ubuntu-，deepin等Linux系统的安装" class="headerlink" title="ubuntu ，deepin等Linux系统的安装"></a>ubuntu ，deepin等Linux系统的安装</h1><h2 id="一-制作启动盘"><a href="#一-制作启动盘" class="headerlink" title="一.制作启动盘"></a>一.制作启动盘</h2><ol>
+<li>首先</li>
+</ol>
+]]></content>
+      <categories>
+        <category>实操</category>
+      </categories>
+      <tags>
+        <tag>软件</tag>
+        <tag>系统</tag>
       </tags>
   </entry>
 </search>
