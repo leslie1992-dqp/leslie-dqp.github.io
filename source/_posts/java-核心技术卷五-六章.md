@@ -96,26 +96,26 @@ public class Manager extends Employee {
 ```java
 public class Manager extends Employee {
 
-		public double bonus;
+    public double bonus;
 
     public Manager(String name, double salary, int year, int month, int day) {
         super(name, salary, year, month, day);
       	bonus = 0;
     }
   
-  	public void setBonus(double bonus){
+    public void setBonus(double bonus){
       this.bonus = bonus;
     }
   
-  	@Override
+    @Override
     public double getSalary() {
         return bonus + super.getSalary();
     }
   
-//		@Override
+//	@Override
 //    public double getSalary() {
-//        return bonus + salary;
-//				return bonus + getSalary();
+//      return bonus + salary;
+//	return bonus + getSalary();
 //    }
 
 }
@@ -315,8 +315,8 @@ public class Example {
 public class Test{
 	pubic static void main(String [] args){
 	
-				Example example = new Example();
-				System.out.println(example.equals(null));
+	Example example = new Example();
+	System.out.println(example.equals(null));
         System.out.println(example.getClass());
         System.out.println(example.hashCode());
         System.out.println(example.toString());
@@ -413,7 +413,7 @@ public class Test{
 ​      Integer里的value和构造器：
 
 ```java
-   private final int value;
+  private final int value;
 		public Integer(int value) {
         this.value = value;
     }
