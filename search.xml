@@ -831,6 +831,9 @@
 </li>
 <li>提交更新，找到暂存区的工作文件，将文件永久的存储到git的仓库目录里（committed）</li>
 </ol>
+<p>git关于本地文件的状态：</p>
+<p>编辑某些文件以后，由于自上次的提交后，你对他们做了修改，git将他们标记为已修改文件。在工作时，你可以选择性地将这些修改过的文件放入暂存区，然后提交所有已经暂存的修改，如此反复：</p>
+<p><img src="https://tva1.sinaimg.cn/large/0081Kckwly1glljf3ubkfj318f0hjaee.jpg" alt="IMG_125B9A301149-1"></p>
 <h1 id="4-git的简单使用"><a href="#4-git的简单使用" class="headerlink" title="4.git的简单使用"></a>4.git的简单使用</h1><ul>
 <li><p>git init 初始化一个空的git仓库，这时候相应的文件夹下会自动生成.git的文件夹，里面就有刚刚说的gitconfig</p>
 </li>
@@ -853,14 +856,40 @@
 <p><img src="https://tva1.sinaimg.cn/large/0081Kckwly1gli4ydr3pzj30u00ufdlq.jpg" alt="屏幕快照 2020-12-10 上午1.50.46"></p>
 </li>
 </ul>
-<h1 id="5-git的分支管理"><a href="#5-git的分支管理" class="headerlink" title="5.git的分支管理"></a>5.git的分支管理</h1><h2 id="1-分支的简单图解"><a href="#1-分支的简单图解" class="headerlink" title="1.分支的简单图解"></a>1.分支的简单图解</h2><p>在版本回退里，我们可以回溯到之前的任意一个版本里，而这些版本都处在一条时间线上，这条时间线就是一条分支</p>
+<h1 id="5-关于忽略文件-gitignore"><a href="#5-关于忽略文件-gitignore" class="headerlink" title="5.关于忽略文件.gitignore"></a>5.关于忽略文件.gitignore</h1><p>有时候会有一些文件无需要纳入git管理，通常是一些自动生成的文件，比如.exe或者一些日志文件，这种情况下我们可以创建一个名为.gitignore文件</p>
+<p>例如：</p>
+<p><img src="https://tva1.sinaimg.cn/large/0081Kckwly1glljwvkko2j30dy0i4wfq.jpg" alt="屏幕快照 2020-12-13 上午12.44.50"></p>
+<p>最后一行意思就是git忽略所有.o或者.a结尾的文件，一般这类文件都是在编译过程中出现的，倒数第二行就时忽略所有～结尾的文件。</p>
+<p>最简单的情况下，一个仓库可能只有根目录下有一个.gitignore文件，会递归的调用到整个仓库中，而当子目录下也有额外的.gitignore文件。子目录中的.gitignore文件的规则只作用于它所在的目录。</p>
+<p>文件.gitignore的格式规范如下：</p>
+<ol>
+<li>所有空行和#开头的行都被视为注释而忽略掉</li>
+<li>使用标准的glob模式匹配，会递归的调用到整个文件区</li>
+<li>匹配模式可以以（/）开头防止递归</li>
+<li>匹配模式可以以（/）结尾指定目录</li>
+<li>要忽略指定模式以外的文件或者目录，可以在模式前加！取反</li>
+</ol>
+<p><img src="https://tva1.sinaimg.cn/large/0081Kckwly1gllk9eypvij31210jt42i.jpg" alt="IMG_7193A70E1EED-1"></p>
+<p>关于glob模式：</p>
+<p>一种在shell里简化了的正则表达式，用*等匹配模式来匹配文件，在解析路径模式时，大括号内用逗号进行分割，分割的部分可以包含/，所以a{/b/c,bcd}会被展开为a/b/c和abcd</p>
+<p>在路径匹配模式里，以下字符有一些特殊的作用：</p>
+<ul>
+<li><p>*：匹配单路径下0个或者多个字符串</p>
+</li>
+<li><p>？：匹配一个字符串</p>
+</li>
+<li><p>[…]：匹配指定范围内的字符串，如果[]中第一个字符是！或者^ ，则匹配不在范围内的任意字符串</p>
+</li>
+</ul>
+<p>知道这么多差不多够用了</p>
+<h1 id="6-git的分支管理"><a href="#6-git的分支管理" class="headerlink" title="6.git的分支管理"></a>6.git的分支管理</h1><h2 id="1-分支的简单图解"><a href="#1-分支的简单图解" class="headerlink" title="1.分支的简单图解"></a>1.分支的简单图解</h2><p>在版本回退里，我们可以回溯到之前的任意一个版本里，而这些版本都处在一条时间线上，这条时间线就是一条分支</p>
 <p>默认的分支是main（之前是master，后来由于这个词有歧视黑人的意思，就换了这里的图都是用的master），本身可以把它看成一个指针，head指针就指向master指针</p>
 <p><img src="https://tva1.sinaimg.cn/large/0081Kckwly1gli5672o9lj308d0473yf.jpg" alt="image-20201210015840577"></p>
 <p>我们在每次提交的时候，都会多出一个节点，指针也会随之移动，当我们创建一个新的分支，也就是创建一个新的指针，我们可以通过命令将head指针移动到新的指针上：</p>
 <p><img src="https://tva1.sinaimg.cn/large/0081Kckwly1gli58b6b3mj30dq06h3yj.jpg" alt="image-20201210020044381"></p>
 <p>我们还可以将两个分支合并：</p>
 <p><img src="https://tva1.sinaimg.cn/large/0081Kckwly1gli5a76lkcj30br066jre.jpg" alt="image-20201210020232237"></p>
-<p>还可以在这里八dev分支给删掉</p>
+<p>还可以在这里把dev分支给删掉</p>
 <p><img src="https://tva1.sinaimg.cn/large/0081Kckwly1gli5awchx8j30br04fwef.jpg" alt="image-20201210020314110"></p>
 <h2 id="2-分支的使用"><a href="#2-分支的使用" class="headerlink" title="2.分支的使用"></a>2.分支的使用</h2><ol>
 <li>git branch 查看当前所有分支，及所在分支</li>
@@ -869,8 +898,15 @@
 <li>（处于某个分支下）git merge 分支名，这就是将两个分支合并，此时两个分支就处在同一个节点下</li>
 <li>git branch -d ：删除分支</li>
 </ol>
-<p>题外：关于github仓库的一些关联</p>
-<p>对仓库进行操作，使本地与github同步</p>
+<h1 id="7关于git远程仓库的使用"><a href="#7关于git远程仓库的使用" class="headerlink" title="7关于git远程仓库的使用"></a>7关于git远程仓库的使用</h1><h2 id="仓库服务器"><a href="#仓库服务器" class="headerlink" title="仓库服务器"></a>仓库服务器</h2><p>如果想查看你已经配置的远程仓库的服务器，可以运行<code>git remote</code>命令，会列出你的远程服务器的简写，一般来说链接了远程仓库，至少能够看到origin，这是给你克隆的仓库服务器的默认名字，也可以指定选项-v，会显示需要读写远程仓库使用的git保存的简写与其对应的url</p>
+<p><img src="https://tva1.sinaimg.cn/large/0081Kckwly1gllkyky485j30qo07adgr.jpg" alt="屏幕快照 2020-12-13 上午1.21.19"></p>
+<h2 id="添加远程仓库："><a href="#添加远程仓库：" class="headerlink" title="添加远程仓库："></a>添加远程仓库：</h2><p>可以使用git clone自动自行添加远程仓库的，也可以自行配置，比如：</p>
+<p><code>git remote add &lt;shortname&gt; &lt;url&gt;</code>:添加一个新的远程git仓库，同时指定一个方便实用的简写</p>
+<p><img src="https://tva1.sinaimg.cn/large/0081Kckwly1glllgrj6rlj314a0qpgw0.jpg" alt="IMG_6B07EE8387AE-1"></p>
+<p>果你想要查看它，可以剪出一个指向改点的本地分支</p>
+<h2 id="从远程仓库中抓取和拉取："><a href="#从远程仓库中抓取和拉取：" class="headerlink" title="从远程仓库中抓取和拉取："></a>从远程仓库中抓取和拉取：</h2><p>git fetch  &lt; remote&gt; 会将远程的仓库的数据下载到本地仓库，但不会自动合并并修改当前的工作，需要手动合并，如果当前分支设置了跟踪的远程分支，可以使用git pull自动抓取远程分支的数据合并到本地</p>
+<h2 id="推送到远程分支："><a href="#推送到远程分支：" class="headerlink" title="推送到远程分支："></a>推送到远程分支：</h2><p>git push &lt; remote&gt; &lt; branch&gt;,如果要将master分支推送到origin服务器，那么就可以运行<code>git push origin master</code></p>
+<p>比如第一次对远程仓库进行操作，使本地与github同步</p>
 <blockquote>
 <p>git remote add origin +git地址 (添加远程仓库到本地)</p>
 <p>git pull –rebase origin main(更新远程仓库的更新（mian分支)到本地）</p>
