@@ -30,7 +30,7 @@
 <meta property="og:description" content="十大排序引言： 排序简单介绍首先排序是最基本的一类算法，对于我们来说学好排序也是算法入门的一个很好的开始，在介绍排序之前首先介绍一下排序中的几个基本概念：  稳定排序：将数组中的元素排序以后，若原来的集合里有相同的元素，则相同的元素在排序以后，相对的位置不变，比如：  [3,7,2,3,1,9]        用a表示前面的3，b表示后面的3 则排序以后就有： [1,2,a,b,7,9]">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://tva1.sinaimg.cn/large/0081Kckwgy1glca3fn0auj31fy0u0gqn.jpg">
-<meta property="og:image" content="https://pic4.zhimg.com/v2-33a947c71ad62b254cab62e5364d2813_b.webp">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/0081Kckwly1gmcvauk7xug30k0068tjv.gif">
 <meta property="og:image" content="https://tva1.sinaimg.cn/large/0081Kckwly1glcbjsvwtyj30k0064t8w.jpg">
 <meta property="og:image" content="https://tva1.sinaimg.cn/large/0081Kckwly1glccaqjbk2j30k00cg74i.jpg">
 <meta property="og:image" content="https://tva1.sinaimg.cn/large/0081Kckwly1glcvabrniij30u00vatc3.jpg">
@@ -43,7 +43,7 @@
 <meta property="og:image" content="https://tva1.sinaimg.cn/large/0081Kckwly1gld81vzudbj30c408agls.jpg">
 <meta property="og:image" content="https://tva1.sinaimg.cn/large/0081Kckwly1gld81er2olg30k00bc0z1.gif">
 <meta property="article:published_time" content="2020-10-30T06:25:36.000Z">
-<meta property="article:modified_time" content="2020-12-05T11:55:14.000Z">
+<meta property="article:modified_time" content="2021-01-05T07:56:53.000Z">
 <meta property="article:author" content="charming">
 <meta property="article:tag" content="c语言">
 <meta property="article:tag" content="排序">
@@ -324,7 +324,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2020-12-05 19:55:14" itemprop="dateModified" datetime="2020-12-05T19:55:14+08:00">2020-12-05</time>
+        <time title="修改时间：2021-01-05 15:56:53" itemprop="dateModified" datetime="2021-01-05T15:56:53+08:00">2021-01-05</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -392,7 +392,7 @@
 <h2 id="一-冒泡排序-Bubble-Sort"><a href="#一-冒泡排序-Bubble-Sort" class="headerlink" title="一. 冒泡排序(Bubble Sort)"></a>一. 冒泡排序(Bubble Sort)</h2><p>把第一个元素与第二个元素比较，如果第一个比第二个大，则交换他们的位置。接着继续比较第二个与第三个元素，如果第二个比第三个大，则交换他们的位置….</p>
 <p>我们对每一对相邻元素作同样的工作，从开始第一对到结尾的最后一对，这样一趟比较交换下来之后，排在最右的元素就会是最大的数。</p>
 <p>除去最右的元素，我们对剩余的元素做同样的工作，如此重复下去，直到排序完成。</p>
-<p><img src="https://pic4.zhimg.com/v2-33a947c71ad62b254cab62e5364d2813_b.webp" alt="img"></p>
+<p><img src="https://tva1.sinaimg.cn/large/0081Kckwly1gmcvauk7xug30k0068tjv.gif" alt="img"></p>
 <p>代码示例：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 冒泡排序</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">BubbleSort</span><span class="params">(<span class="keyword">int</span> a[], <span class="keyword">int</span> size)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> len = size;</span><br><span class="line">    <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len<span class="number">-1</span>; i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; len<span class="number">-1</span>-i; j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(a[j] &gt; a[j+<span class="number">1</span>])&#123;</span><br><span class="line">                <span class="keyword">int</span> temp = a[j];</span><br><span class="line">                a[j] = a[j+<span class="number">1</span>];</span><br><span class="line">                a[j+<span class="number">1</span>] = temp;</span><br><span class="line">            &#125;</span><br><span class="line">            count++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,count);</span><br><span class="line">    show(a,len);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 冒泡排序(优化算法)</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">BubbleSort2</span><span class="params">(<span class="keyword">int</span> a[], <span class="keyword">int</span> size)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> len = size;</span><br><span class="line">    <span class="keyword">int</span> flag = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len<span class="number">-1</span>; i++)&#123;</span><br><span class="line">        flag = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; len<span class="number">-1</span>-i; j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(a[j] &gt; a[j+<span class="number">1</span>])&#123;</span><br><span class="line">                <span class="keyword">int</span> temp = a[j];</span><br><span class="line">                a[j] = a[j+<span class="number">1</span>];</span><br><span class="line">                a[j+<span class="number">1</span>] = temp;</span><br><span class="line">                flag = <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            count++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(flag == <span class="number">0</span>) <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,count);</span><br><span class="line">    show(a,len);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -565,7 +565,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -576,13 +576,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">46k</span>
+    <span title="站点总字数">47k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">42 分钟</span>
+    <span title="站点阅读时长">43 分钟</span>
   </span>
 </div>
 <div class="busuanzi-count">

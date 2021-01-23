@@ -678,7 +678,7 @@
 <h2 id="一-冒泡排序-Bubble-Sort"><a href="#一-冒泡排序-Bubble-Sort" class="headerlink" title="一. 冒泡排序(Bubble Sort)"></a>一. 冒泡排序(Bubble Sort)</h2><p>把第一个元素与第二个元素比较，如果第一个比第二个大，则交换他们的位置。接着继续比较第二个与第三个元素，如果第二个比第三个大，则交换他们的位置….</p>
 <p>我们对每一对相邻元素作同样的工作，从开始第一对到结尾的最后一对，这样一趟比较交换下来之后，排在最右的元素就会是最大的数。</p>
 <p>除去最右的元素，我们对剩余的元素做同样的工作，如此重复下去，直到排序完成。</p>
-<p><img src="https://pic4.zhimg.com/v2-33a947c71ad62b254cab62e5364d2813_b.webp" alt="img"></p>
+<p><img src="https://tva1.sinaimg.cn/large/0081Kckwly1gmcvauk7xug30k0068tjv.gif" alt="img"></p>
 <p>代码示例：</p>
 <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 冒泡排序</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">BubbleSort</span><span class="params">(<span class="keyword">int</span> a[], <span class="keyword">int</span> size)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> len = size;</span><br><span class="line">    <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len<span class="number">-1</span>; i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; len<span class="number">-1</span>-i; j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(a[j] &gt; a[j+<span class="number">1</span>])&#123;</span><br><span class="line">                <span class="keyword">int</span> temp = a[j];</span><br><span class="line">                a[j] = a[j+<span class="number">1</span>];</span><br><span class="line">                a[j+<span class="number">1</span>] = temp;</span><br><span class="line">            &#125;</span><br><span class="line">            count++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,count);</span><br><span class="line">    show(a,len);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 冒泡排序(优化算法)</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">BubbleSort2</span><span class="params">(<span class="keyword">int</span> a[], <span class="keyword">int</span> size)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> len = size;</span><br><span class="line">    <span class="keyword">int</span> flag = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len<span class="number">-1</span>; i++)&#123;</span><br><span class="line">        flag = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; len<span class="number">-1</span>-i; j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(a[j] &gt; a[j+<span class="number">1</span>])&#123;</span><br><span class="line">                <span class="keyword">int</span> temp = a[j];</span><br><span class="line">                a[j] = a[j+<span class="number">1</span>];</span><br><span class="line">                a[j+<span class="number">1</span>] = temp;</span><br><span class="line">                flag = <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            count++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(flag == <span class="number">0</span>) <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,count);</span><br><span class="line">    show(a,len);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -850,21 +850,21 @@
 </li>
 <li><p>git rm 文件名：删除掉暂存区的文件,一般加上后缀–cached表示不删除原文件，只是从git暂存区删除，而-f则是直接删除掉这个文件</p>
 </li>
-<li><p>git log:查看提交的历史，可以查看各个人的提交</p>
+<li><p>git log:查看提交的历史，可以查看一个项目提交历史的各个人的提交</p>
 </li>
-<li><p>版本回退：在git log里可以看到 commit后面跟着的这一大串散列码，这就是git的版本号，我们可以使用git reset –hard 版本号回退到之前的任何一个版本</p>
+<li><p>版本回退：在git log里可以看到 commit后面跟着的这一大串散列码，这就是git的版本号，我们可以使用git reset –hard 版本号回退到之前的任何一个版本（本地是reset，远程是revert）</p>
 <p><img src="https://tva1.sinaimg.cn/large/0081Kckwly1gli4ydr3pzj30u00ufdlq.jpg" alt="屏幕快照 2020-12-10 上午1.50.46"></p>
 </li>
 </ul>
 <h1 id="5-关于忽略文件-gitignore"><a href="#5-关于忽略文件-gitignore" class="headerlink" title="5.关于忽略文件.gitignore"></a>5.关于忽略文件.gitignore</h1><p>有时候会有一些文件无需要纳入git管理，通常是一些自动生成的文件，比如.exe或者一些日志文件，这种情况下我们可以创建一个名为.gitignore文件</p>
 <p>例如：</p>
 <p><img src="https://tva1.sinaimg.cn/large/0081Kckwly1glljwvkko2j30dy0i4wfq.jpg" alt="屏幕快照 2020-12-13 上午12.44.50"></p>
-<p>最后一行意思就是git忽略所有.o或者.a结尾的文件，一般这类文件都是在编译过程中出现的，倒数第二行就时忽略所有～结尾的文件。</p>
+<p>倒数第二行意思就是git忽略所有.o或者.a结尾的文件，一般这类文件都是在编译过程中出现的，最后一行就时忽略所有～结尾的文件。</p>
 <p>最简单的情况下，一个仓库可能只有根目录下有一个.gitignore文件，会递归的调用到整个仓库中，而当子目录下也有额外的.gitignore文件。子目录中的.gitignore文件的规则只作用于它所在的目录。</p>
 <p>文件.gitignore的格式规范如下：</p>
 <ol>
 <li>所有空行和#开头的行都被视为注释而忽略掉</li>
-<li>使用标准的glob模式匹配，会递归的调用到整个文件区</li>
+<li>使用标准的glob模式匹配，会递归的调用到整个文件区（？）</li>
 <li>匹配模式可以以（/）开头防止递归</li>
 <li>匹配模式可以以（/）结尾指定目录</li>
 <li>要忽略指定模式以外的文件或者目录，可以在模式前加！取反</li>
@@ -883,7 +883,7 @@
 </ul>
 <p>知道这么多差不多够用了</p>
 <h1 id="6-git的分支管理"><a href="#6-git的分支管理" class="headerlink" title="6.git的分支管理"></a>6.git的分支管理</h1><h2 id="1-分支的简单图解"><a href="#1-分支的简单图解" class="headerlink" title="1.分支的简单图解"></a>1.分支的简单图解</h2><p>在版本回退里，我们可以回溯到之前的任意一个版本里，而这些版本都处在一条时间线上，这条时间线就是一条分支</p>
-<p>默认的分支是main（之前是master，后来由于这个词有歧视黑人的意思，就换了这里的图都是用的master），本身可以把它看成一个指针，head指针就指向master指针</p>
+<p>默认的分支是main（之前是master，后来由于这个词有歧视黑人的意思，就换了这里的图都是用的master），本身可以把它看成一个指针，head指针就是一个特殊的指针，这里就指向master指针</p>
 <p><img src="https://tva1.sinaimg.cn/large/0081Kckwly1gli5672o9lj308d0473yf.jpg" alt="image-20201210015840577"></p>
 <p>我们在每次提交的时候，都会多出一个节点，指针也会随之移动，当我们创建一个新的分支，也就是创建一个新的指针，我们可以通过命令将head指针移动到新的指针上：</p>
 <p><img src="https://tva1.sinaimg.cn/large/0081Kckwly1gli58b6b3mj30dq06h3yj.jpg" alt="image-20201210020044381"></p>
@@ -898,7 +898,7 @@
 <li>（处于某个分支下）git merge 分支名，这就是将两个分支合并，此时两个分支就处在同一个节点下</li>
 <li>git branch -d ：删除分支</li>
 </ol>
-<h1 id="7关于git远程仓库的使用"><a href="#7关于git远程仓库的使用" class="headerlink" title="7关于git远程仓库的使用"></a>7关于git远程仓库的使用</h1><h2 id="仓库服务器"><a href="#仓库服务器" class="headerlink" title="仓库服务器"></a>仓库服务器</h2><p>如果想查看你已经配置的远程仓库的服务器，可以运行<code>git remote</code>命令，会列出你的远程服务器的简写，一般来说链接了远程仓库，至少能够看到origin，这是给你克隆的仓库服务器的默认名字，也可以指定选项-v，会显示需要读写远程仓库使用的git保存的简写与其对应的url</p>
+<h1 id="7-关于git远程仓库的使用"><a href="#7-关于git远程仓库的使用" class="headerlink" title="7.关于git远程仓库的使用"></a>7.关于git远程仓库的使用</h1><h2 id="仓库服务器"><a href="#仓库服务器" class="headerlink" title="仓库服务器"></a>仓库服务器</h2><p>如果想查看你已经配置的远程仓库的服务器，可以运行<code>git remote</code>命令，会列出你的远程服务器的简写，一般来说链接了远程仓库，至少能够看到origin，这是给你克隆的仓库服务器的默认名字，也可以指定选项-v，会显示需要读写远程仓库使用的git保存的简写与其对应的url</p>
 <p><img src="https://tva1.sinaimg.cn/large/0081Kckwly1gllkyky485j30qo07adgr.jpg" alt="屏幕快照 2020-12-13 上午1.21.19"></p>
 <h2 id="添加远程仓库："><a href="#添加远程仓库：" class="headerlink" title="添加远程仓库："></a>添加远程仓库：</h2><p>可以使用git clone自动自行添加远程仓库的，也可以自行配置，比如：</p>
 <p><code>git remote add &lt;shortname&gt; &lt;url&gt;</code>:添加一个新的远程git仓库，同时指定一个方便实用的简写</p>
@@ -912,6 +912,20 @@
 <p>git pull –rebase origin main(更新远程仓库的更新（mian分支)到本地）</p>
 <p>git push -u origin main将本地仓库与远程合并</p>
 </blockquote>
+<h1 id="8-git-与github的多人协作"><a href="#8-git-与github的多人协作" class="headerlink" title="8.git 与github的多人协作"></a>8.git 与github的多人协作</h1><p>在一个github的仓库里，我们一般会有一个主分支，会有许多许多开发分支，每个人可以自己拉取一个分支，也可以都在一个分支里开发，开发者单独在这样的分支里开发自己的代码和功能，最后提交到拉取的分支上，最后再pull request一下，等待确认无误，再merge到主分支上，这就是一个规范的多人协作开发的流程。</p>
+<p>将项目克隆到本地打开以后，在本地的仓库里建立新分支并连接远程分支</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git checkout -b dev origin&#x2F;dev</span><br></pre></td></tr></table></figure>
+
+<p>之后就可以在本地的dev分支进行提交（add, commit, push)，可能会出现提交不成功，应该是因为远程分支的版本比本地的更新，这个时候只需要git pull一下，将远程更新拉取到本地就行，这里可能出现的问题有两种：</p>
+<ol>
+<li><p>如图：</p>
+<p><img src="https://tva1.sinaimg.cn/large/008eGmZEgy1gmxvej76dvj30zg0b63zs.jpg" alt="屏幕快照 2021-01-23 下午7.49.34">只需要在按提示在命令行输入 gi t branch –set-upstream-to=origin/dev dev 就可以，这样会把本地的dev分支追踪到远程仓库的dev分支</p>
+</li>
+<li><p>注意这个时候也有可能会出现冲突，可以使用git status查看那些文件有问题，进入文件查看几个相应的地方出现的&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; =========&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;这样的东西，删掉冲突的地方再add就可以了</p>
+</li>
+</ol>
+<p>完毕后，我们就将自己在本地dev上的更改提交到了github的远程仓库上，这个时候只需要在github上提交一个pull request，注意是在dev分支向main分支上提pull request，就完成自己的提交任务。</p>
+<p>在项目开发的过程中，可能会有其他的人的提交被main分支merge上了，我们需要在本地切换到main分支上，git pull一下，同步更新，之后再进入dev分支，也要调用git merge origin/main 合并主分支上的最新更新，如果有冲突，就像前面那样处理冲突，在就可以git add 等，最后git merge -continue</p>
 ]]></content>
       <categories>
         <category>学习</category>
