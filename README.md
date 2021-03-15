@@ -5,5 +5,5 @@
 记得每次更新博客都要把本地的新加文件推到分支上
 ## 简单使用
 - **hexo s** 会生成一个本地端口用于调试博客网页
-- **hexo newpage pagename** 会自动在source文件目录下生成新的.md文件作为博客源文件
+- **hexo new “pagename”** 会自动在source/_posts文件目录下生成新的.md文件作为博客源文件
 - **hexo g**  + **hexo d**将新建博客部署到网站中
