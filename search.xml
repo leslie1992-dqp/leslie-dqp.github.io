@@ -1193,4 +1193,82 @@
         <tag>编程</tag>
       </tags>
   </entry>
+  <entry>
+    <title>初识动态规划</title>
+    <url>/2021/03/27/%E5%88%9D%E8%AF%86%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/</url>
+    <content><![CDATA[<h1 id="动态规划的简单介绍"><a href="#动态规划的简单介绍" class="headerlink" title="动态规划的简单介绍"></a>动态规划的简单介绍</h1><h2 id="从一道简单的题目开始："><a href="#从一道简单的题目开始：" class="headerlink" title="从一道简单的题目开始："></a>从一道简单的题目开始：</h2><blockquote>
+<p>斐波那契数，通常用 F(n) 表示，形成的序列称为 斐波那契数列 。该数列由 0 和 1 开始，后面的每一项数字都是前面两项数字的和。也就是：</p>
+<p>F(0) = 0，F(1) = 1<br>F(n) = F(n - 1) + F(n - 2)，其中 n &gt; 1<br>给你 n ，请计算 F(n) 。</p>
+</blockquote>
+<a id="more"></a>
+
+<p>对于编程来讲，这是非常非常容易入手的一道题目，我们可以从递归的思想入手：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">fib</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">if</span>(n == <span class="number">0</span> || n == <span class="number">1</span>)</span><br><span class="line">        <span class="keyword">return</span> n;</span><br><span class="line">      <span class="keyword">else</span> <span class="keyword">return</span> fib(n-<span class="number">1</span>) + fib(n-<span class="number">2</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>对于我们来说这样写无疑是最简单最容易理解的，只要理解递归的作用，这道题就能够很清楚的解出来，但是其实对于计算机来讲，并不是那样简单的工作，甚至我分析一下其实它相反做了很多多余的工作，我们可以画一个递归树来理解一下：</p>
+<p><img src="https://tva1.sinaimg.cn/large/008eGmZEgy1goyh9x5umzj30ry0rsthz.jpg"></p>
+<p>从这里可以看出，其实计算机重复计算了很多次的例如<code>fib(4)</code>、<code>fib(3)</code>、<code>fib(2)</code>,而算法是很讲究效率的，这样的解题方式虽然可以把结果算出来，但大量重复的计算同一个函数其实是得不偿失的，那么我们应该怎么样去处理这类包含着大量重复的子问题的题目呢？</p>
+<p>如果在往下递归的时候，我们有时候可能会进行重复计算，那为什么不利用一定的内存空间把我们计算以后的结果保留下来呢？</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">     <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">fib</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">int</span>[] notebook = <span class="keyword">new</span> <span class="keyword">int</span>[n+<span class="number">1</span>];</span><br><span class="line">      <span class="keyword">if</span>( n == <span class="number">0</span> || n == <span class="number">1</span>) <span class="keyword">return</span> n;</span><br><span class="line">      </span><br><span class="line">      Arrays.fill(notebook, <span class="number">0</span>);</span><br><span class="line">      notebook[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">      </span><br><span class="line">      <span class="keyword">return</span> fun(n-<span class="number">1</span>, notebook) + fun(n-<span class="number">2</span>,notebook);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">fun</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span>[] notebook)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(n &gt; <span class="number">1</span> &amp;&amp; notebook[n] == <span class="number">0</span>)&#123;</span><br><span class="line">            notebook[n] = fun(n-<span class="number">1</span>, notebook) + fun(n-<span class="number">2</span>, notebook);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> notebook[n];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里我们用了一个notebook的数组用来存放这样的一个结果，这样在事先走到最底层的时候，会把之前的结果保存下来，就不用一直计算之前的结果啦。</p>
+<p>这道题还有一个很简单的办法：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">     <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">fib</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>( n == <span class="number">0</span> || n == <span class="number">1</span>) <span class="keyword">return</span> n;</span><br><span class="line">        <span class="keyword">int</span> m1 = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> m2 = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i&lt;=n; i++)&#123;</span><br><span class="line">            ans = m1 + m2;</span><br><span class="line">            m1 = m2;</span><br><span class="line">            m2 = ans;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="动态规划-解题应用"><a href="#动态规划-解题应用" class="headerlink" title="动态规划 解题应用"></a>动态规划 解题应用</h2><p>像第二个解法一样，当我们面对一个问题的时候，如果待求解问题分解成若干个互相重叠的子问题，每个子问题对应决策过程的一个阶段，一般来说，子问题的重叠关系表现在对给定问题求解的递推关系中，我们将子问题的解求解一次并填入表中，当再次需要求解此问题子问题时就可以通过查表来获得该子问题的解，从而避免了大量的重复计算，这就是动态规划的思路，接下来我们看一道比较难一点的题目。</p>
+<p>一般来说，一个动态规划的题目有这样几个阶梯的步骤：</p>
+<ul>
+<li>划分子问题：<ul>
+<li>将原问题分解成若干个子问题，每个子问题对应一个决策阶段，并且子问题之间具有重叠关系</li>
+</ul>
+</li>
+<li>确定动态规划函数（状态转移方程）：<ul>
+<li>根据子问题之间的重叠关系找到子问题满足的递推关系式，也就是确定这个状态转移方程</li>
+</ul>
+</li>
+<li>填写表格：<ul>
+<li>设计表格（一般来说代码中是数组的存在），自底向上的方式计算各个子问题时的解并填到表中，实现动态规划的过程</li>
+</ul>
+</li>
+</ul>
+<p>我们看题目：</p>
+<blockquote>
+<p>给定一个字符串 s 和一个字符串 t ，计算在 s 的子序列中 t 出现的个数。</p>
+<p>字符串的一个 子序列 是指，通过删除一些（也可以不删除）字符且不干扰剩余字符相对位置所组成的新字符串。（例如，”ACE” 是 “ABCDE” 的一个子序列，而 “AEC” 不是）</p>
+<p>题目数据保证答案符合 32 位带符号整数范围。</p>
+<p>示例 1：</p>
+<p>输入：s = “rabbbit”, t = “rabbit”<br>输出：3<br>解释：<br>如下图所示, 有 3 种可以从 s 中得到 “rabbit” 的方案。<br>(上箭头符号 ^ 表示选取的字母)<br>rabbbit<br>^^^^ ^^<br>rabbbit<br>^^ ^^^^<br>rabbbit<br>^^^ ^^^</p>
+</blockquote>
+<p>这道题就是一个很经典的动态规划，我们按照动态规划的解题思路来看这道题</p>
+<ol>
+<li><p>划分子问题：</p>
+<ol>
+<li>可以看到对于字符串s和字符串t，我们可以将问题缩小化，比如，对于s，我们可以将t分割成长度为1，2，3，len（t）这样长度的子串去处理，因为每一个t的长度为n的都可以由长度为n-1推导过来，同理，我们把这个思路放到s串上，s的长度为1，2，len（n），对于匹配字符串t来说他也是可分割的</li>
+<li>经过之前的分析就可以知道，其实我们可以用一个二维数组去处理我们我们面对的这个问题，行数表示t字符串的位置，列数表示s字符串的列数，具体数组上的[i] [j]元素的值就表示s的0-i上的子串上t的0-j出现的次数</li>
+</ol>
+</li>
+<li><p>填表看看规律，我们从示例出发建表：</p>
+<ol>
+<li><img src="https://tva1.sinaimg.cn/large/008eGmZEgy1goyk51tz65j30zb0rsqax.jpg" alt="IMG_18CCD1535F33-1"></li>
+<li>最重要的就是从这样的一个表里看出他的递推规律，这样我们就可以开始写代码了，规律其实也不难<img src="https://tva1.sinaimg.cn/large/008eGmZEgy1goykc5by0xj31290rsk44.jpg" alt="IMG_88A03195CA8A-1"></li>
+<li>这里我用橙色表示当i和j位置的字符不相等时的递推规律，用红色表示当i位置和j位置字符相等时的递推规律，这里唯一要注意的就是由于红色推导的时候，我们会上溯到i-1，j-1位置，就要判断当i=0时的特殊形式。</li>
+</ol>
+</li>
+<li><p>写代码：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">numDistinct</span><span class="params">(String s, String t)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> m = t.length();</span><br><span class="line">        <span class="keyword">int</span> n = s.length();</span><br><span class="line">        <span class="keyword">if</span>(n &lt; m) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span>[][] dp = <span class="keyword">new</span> <span class="keyword">int</span>[m][n];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i&lt;m; i++)&#123;</span><br><span class="line">            Arrays.fill(dp[i],<span class="number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(s.charAt(<span class="number">0</span>) == t.charAt(<span class="number">0</span>)) dp[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i&lt;m; i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = i; j&lt;n; j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(i == <span class="number">0</span> &amp;&amp; j == <span class="number">0</span>) <span class="keyword">continue</span>;</span><br><span class="line">                <span class="keyword">if</span>(i == <span class="number">0</span>)&#123;</span><br><span class="line">                    <span class="keyword">if</span>(t.charAt(i) == s.charAt(j))&#123;</span><br><span class="line">                        dp[i][j] = dp[i][j-<span class="number">1</span>] + <span class="number">1</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">else</span></span><br><span class="line">                        dp[i][j] = dp[i][j-<span class="number">1</span>];</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(t.charAt(i) == s.charAt(j))&#123;</span><br><span class="line">                    dp[i][j] = dp[i-<span class="number">1</span>][j-<span class="number">1</span>] + dp[i][j-<span class="number">1</span>];</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                    dp[i][j] = dp[i][j-<span class="number">1</span>];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> dp[m-<span class="number">1</span>][n-<span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<p>这就是动态规划的一次进阶一点的使用，其实我们发现其实理清楚思路以后，动态规划也是一种暴力枚举，每种情况其实都有考虑到，只是在某些时候我们在做决策的时候（这里可以看作当我们在数组里填数字的时候），我们灵活的存放了我们应该记住的子问题的答案，从而完美递推到了最终问题的答案。道阻且长，加油吧！</p>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+        <tag>算法</tag>
+      </tags>
+  </entry>
 </search>
