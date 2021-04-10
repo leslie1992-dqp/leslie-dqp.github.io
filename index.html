@@ -217,7 +217,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-count">11</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -230,7 +230,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-count">11</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -266,6 +266,114 @@
       
 
       
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://charming-c.github.io/2021/04/06/Leetcode%E5%88%B7%E9%A2%98%E6%97%A5%E8%AE%B0-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%EF%BC%88%E4%B8%80%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/icon2.jpg">
+      <meta itemprop="name" content="charming">
+      <meta itemprop="description" content="所思，所感，所想。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Charming-Zone">
+    </span>
+
+    
+    
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/04/06/Leetcode%E5%88%B7%E9%A2%98%E6%97%A5%E8%AE%B0-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%EF%BC%88%E4%B8%80%EF%BC%89/" class="post-title-link" itemprop="url">Leetcode刷题日记--动态规划（一）</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-04-06 22:29:09" itemprop="dateCreated datePublished" datetime="2021-04-06T22:29:09+08:00">2021-04-06</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-04-10 15:41:53" itemprop="dateModified" datetime="2021-04-10T15:41:53+08:00">2021-04-10</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">算法</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>8.2k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>7 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="动态规划（一）"><a href="#动态规划（一）" class="headerlink" title="动态规划（一）"></a>动态规划（一）</h1><h2 id="Leetcode-第940题-–-不同的子序列II"><a href="#Leetcode-第940题-–-不同的子序列II" class="headerlink" title="Leetcode 第940题 – 不同的子序列II"></a>Leetcode 第940题 – 不同的子序列II</h2><p>题目描述：</p>
+<blockquote>
+<p>给定一个字符串 S，计算 S 的不同非空子序列的个数。</p>
+<p>因为结果可能很大，所以返回答案模 10^9 + 7.</p>
+<p>​    示例 1：</p>
+<p>​    输入：”abc”</p>
+<p>​    输出：7<br>​    解释：7 个不同的子序列分别是 “a”, “b”, “c”, “ab”, “ac”, “bc”, 以及 “abc”。</p>
+</blockquote>
+<p>如果明确了这是一道动态规划的问题，那这道题其实是非常简单的，首先可以知道，运用动态规划的思想，一个长度为N的字符串其实是可以将其简单拆解成计算前面长度为N-1的子串的个数，再将子串个数乘以2就好了，当然这只是简单的分析，因为从实际出发，结果不尽然准确。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/04/06/Leetcode%E5%88%B7%E9%A2%98%E6%97%A5%E8%AE%B0-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%EF%BC%88%E4%B8%80%EF%BC%89/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -1196,113 +1304,11 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://charming-c.github.io/2020/09/10/Java-IO%E6%B5%81/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/icon2.jpg">
-      <meta itemprop="name" content="charming">
-      <meta itemprop="description" content="所思，所感，所想。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Charming-Zone">
-    </span>
-
-    
-    
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/09/10/Java-IO%E6%B5%81/" class="post-title-link" itemprop="url">Java-IO流</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2020-09-10 16:46:27" itemprop="dateCreated datePublished" datetime="2020-09-10T16:46:27+08:00">2020-09-10</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2020-11-14 13:15:42" itemprop="dateModified" datetime="2020-11-14T13:15:42+08:00">2020-11-14</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">学习</span></a>
-        </span>
-    </span>
 
   
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>4.2k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>4 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>简单介绍java的io流的概念</p>
-<h1 id="一、IO概念"><a href="#一、IO概念" class="headerlink" title="一、IO概念"></a>一、IO概念</h1><ul>
-<li>I/O就是input和output的缩写，是计算机调度把各个储存中（包括内存和外部储存）的数据写入写出的过程</li>
-<li>所谓的外部设备可以包括硬盘文件, 网络设备, 另个程序等. 也就是当前程序之外的数据设备</li>
-<li>java中用流（stream）来抽象表示这么一个写入写出的功能，封装成一个类，都放在java.io这个包里面</li>
-</ul>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/09/10/Java-IO%E6%B5%81/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-  
-  
-  
-
-
-  
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
 
 
 
@@ -1353,13 +1359,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">59k</span>
+    <span title="站点总字数">67k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">53 分钟</span>
+    <span title="站点阅读时长">1:01</span>
   </span>
 </div>
 <div class="busuanzi-count">
