@@ -3,17 +3,17 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: leslie-dqp
+title: leslie1992-dqp
 subtitle: 我的博客世界！
 description:学习第一位！
 keywords:
-author: leslie-dqp
+author: leslie1992-dqp
 language: zh-CN
 timezone: Asia/Shanghai
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://example.com/child' and root as '/child/'
-url: https://leslie-dqp.github.io
+url: https://leslie1992-dqp.github.io
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -104,7 +104,7 @@ theme: next
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: git
-  repo: git@github.com:leslie-dqp/leslie-dqp.github.io.git
+  repo: git@github.com:leslie1992-dqp/leslie1992-dqp.github.io.git
   branch: master
 
 search:
